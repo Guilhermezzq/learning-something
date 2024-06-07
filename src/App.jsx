@@ -25,8 +25,6 @@ function Header() {
   }, []); // O segundo argumento vazio faz com que o useEffect seja executado apenas uma vez, após a montagem do componente
 
 
-
-
   return (
     <header>
       <img src={logoThreeJs} alt="Stylized atom" />
@@ -38,11 +36,56 @@ function Header() {
   );
 }
 
+function CorePrinciple(props) {
+  
+
+  return (
+    <li>
+      <img src="props.img" alt={props.title} />
+      <h3>{props.title}</h3>
+      <p> {props.description} </p>
+    </li>
+  )
+}
+
 function App() {
   return (
     <div>
       <Header />
       <main>
+        <h2> Core Principle</h2>
+        <section id="core-concepts">
+          <ul>
+            <CorePrinciple 
+            title="" 
+            description=""
+            
+            
+            />
+
+            <CorePrinciple 
+            title="" 
+            description=""
+            
+            
+            />
+
+            <CorePrinciple 
+            title="" 
+            description=""
+            
+            
+            />
+
+            <CorePrinciple 
+            title="" 
+            description=""
+            
+            
+            />
+            
+          </ul>
+        </section>
         <h2>Time to get started!</h2>
       </main>
     </div>
