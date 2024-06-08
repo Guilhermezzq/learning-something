@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import logoThreeJs from './assets/threejs.png';
+import { CORE_CONCEPTS } from "./data";
 
 const reactDescriptions = ['Fundamental', 'Crucial', 'Core'];
 
@@ -19,7 +20,7 @@ function Header() {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setDescriptionIndex(getRandomInt(2));
-    }, 2000);
+    }, 1500);
 
     return () => clearInterval(intervalId);
   }, []); // O segundo argumento vazio faz com que o useEffect seja executado apenas uma vez, após a montagem do componente
@@ -35,15 +36,21 @@ function Header() {
     </header>
   );
 }
-
-function CorePrinciple(props) {
+// function CorePrinciple(props) { 
+// Object destructuring
+function CorePrinciple({ image, title, description }) {
   
 
   return (
     <li>
-      <img src="props.img" alt={props.title} />
+      {/* <img src={props.image} alt={props.title} />
       <h3>{props.title}</h3>
       <p> {props.description} </p>
+    </li> */}
+
+      <img src={image} alt={title} />
+      <h3>{title}</h3>
+      <p> {description} </p>
     </li>
   )
 }
@@ -56,33 +63,24 @@ function App() {
         <h2> Core Principle</h2>
         <section id="core-concepts">
           <ul>
-            <CorePrinciple 
-            title="" 
-            description=""
             
-            
-            />
 
             <CorePrinciple 
-            title="" 
-            description=""
-            
-            
-            />
+            title={CORE_CONCEPTS[0].title}
+            description={CORE_CONCEPTS[0].description}
+            image={CORE_CONCEPTS[0].image}
 
-            <CorePrinciple 
-            title="" 
-            description=""
-            
-            
-            />
+            /> 
+            {/* First way to add items */}
 
-            <CorePrinciple 
-            title="" 
-            description=""
-            
-            
-            />
+
+            {/* Second way to add items */}
+
+            <CorePrinciple {...CORE_CONCEPTS[1]}  />
+
+            <CorePrinciple {...CORE_CONCEPTS[2]}  />  
+
+            <CorePrinciple {...CORE_CONCEPTS[3]}  />
             
           </ul>
         </section>
