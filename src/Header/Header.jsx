@@ -19,7 +19,7 @@ function Header() {
     useEffect(() => {
       const intervalId = setInterval(() => {
         setDescriptionIndex(getRandomInt(2));
-      }, 1500);
+      }, 1000);
   
       return () => clearInterval(intervalId);
     }, []); // O segundo argumento vazio faz com que o useEffect seja executado apenas uma vez, após a montagem do componente

@@ -4,6 +4,7 @@
 
 import Header from "./Header/Header";
 import CorePrinciple from "./components/CorePrincipal";
+import Examples from "./components/Examples";
 
 
 import { CORE_CONCEPTS } from "./data";
@@ -42,7 +43,7 @@ function App() {
             
           </ul>
         </section>
-        <h2>Time to get started!</h2>
+        <Examples />
       </main>
     </div>
   );
