@@ -1,31 +1,42 @@
 import { useState } from "react";
 import TabButton from "./TabButton";
-
-
-
+import { EXAMPLES } from "../data";
 
 const Examples = () => {
-
-  const [ selectedTopic, setSelectedTopic ] = useState("Please click a button")
+  const [selectedTopic, setSelectedTopic] = useState();
 
   function handleSelect(selectedButton) {
-      // selectedButton => 'components' , 'jsx' 'props' , 'state'
-      setSelectedTopic(selectedButton);
-      console.log(selectedTopic);
-    }
+    setSelectedTopic(selectedButton);
+  }
 
   return (
     <section id="examples">
-        <h2>Examples</h2>
-        <menu>
-             <TabButton onSelect={ () => handleSelect('animation')} >Animation</TabButton>
-             <TabButton onSelect={ () => handleSelect('camera')}>Camera</TabButton>
-             <TabButton onSelect={ () => handleSelect('materials')} >Materials</TabButton>
-             <TabButton onSelect={ () => handleSelect('object3d')}   >Object3D</TabButton>
-        </menu>
-        {selectedTopic}
+      <h2>Examples</h2>
+      <menu>
+        <TabButton onSelect={() => handleSelect('animation')}>Animation</TabButton>
+        <TabButton onSelect={() => handleSelect('camera')}>Camera</TabButton>
+        <TabButton onSelect={() => handleSelect('materials')}>Materials</TabButton>
+        <TabButton onSelect={() => handleSelect('object3D')}>Object3D</TabButton>
+      </menu>
+      { !selectedTopic && <p>Please select a topic</p>  }
+
+      { 
+      selectedTopic && ( <div id="tab-content"> 
+        <h3>{EXAMPLES[selectedTopic].title}</h3>
+        <p>{EXAMPLES[selectedTopic].description}</p>
+        <pre>
+          <code>
+            {EXAMPLES[selectedTopic].code}
+          </code>
+        </pre>
+      </div> 
+      
+     )
+    } 
+      
+      
     </section>
-  )
-}
+  );
+};
 
 export default Examples;
