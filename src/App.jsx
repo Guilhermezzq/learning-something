@@ -15,7 +15,7 @@ import { CORE_CONCEPTS } from "./data";
 
 function App() {
   return (
-    <div>
+    <> 
       <Header />
       <CorePrinciple />
       <main>
@@ -47,7 +47,7 @@ function App() {
         </section>
         <Examples />
       </main>
-    </div>
+    </>
   );
 }
 
