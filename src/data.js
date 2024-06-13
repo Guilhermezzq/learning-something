@@ -34,49 +34,56 @@ export const EXAMPLES = {
   animation: {
     title: 'Animation',
     description:
-      'Components are the building blocks of React applications. A component is a self-contained module (HTML + optional CSS + JS) that renders some output.',
-    code: `
-function Welcome() {
-  return <h1>Hello, World!</h1>;
-}`,
+      'Animation in Three.js involves changing the properties of objects over time to create the illusion of motion. This can include transformations such as rotation, translation (movement), scaling, and changing material properties. Three.js provides a built-in animation system that allows developers to easily create and control animations.',
+    code: 
+    `
+var rotationSpeed = 0.01;
+var rotationAxis = new THREE.Vector3(0, 1, 0); // Eixo de rotação (eixo Y)
+
+function animate() {
+    requestAnimationFrame(animate);
+
+    cube.rotation.x += rotationSpeed;
+    cube.rotation.y += rotationSpeed;
+
+    renderer.render(scene, camera);
+}
+
+animate();`,
   },
   camera: {
     title: 'Camera',
     description:
-      'JSX is a syntax extension to JavaScript. It is similar to a template language, but it has full power of JavaScript (e.g., it may output dynamic content).',
+      'Abstract base class for cameras. This class should always be inherited when you build a new camera.',
     code: `
-<div>
-  <h1>Welcome {userName}</h1>
-  <p>Time to learn React!</p>
-</div>`,
+var scene = new THREE.Scene();
+
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1,
+1000);
+camera.position.z = 5;
+
+var renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+`,
   },
   materials: {
     title: 'Materials',
     description:
-      'Components accept arbitrary inputs called props. They are like function arguments.',
+      'These constants define properties common to all material types, with the exception of Texture Combine Operations which only apply to MeshBasicMaterial, MeshLambertMaterial and MeshPhongMaterial.',
     code: `
-function Welcome(props) {
-  return <h1>Hello, {props.name}</h1>;
-}`,
+var geometry = new THREE.BoxGeometry();
+
+var material = new THREE.MeshBasicMaterial({ color: 0xff0000 }); // Vermelho
+
+var cube = new THREE.Mesh(geometry, material);
+
+scene.add(cube);`,
   },
   object3D: {
     title: 'Object3D',
     description:
-      'State allows React components to change their output over time in response to user actions, network responses, and anything else.',
-    code: `
-function Counter() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  function handleClick() {
-    setIsVisible(true);
-  }
-
-  return (
-    <div>
-      <button onClick={handleClick}>Show Details</button>
-      {isVisible && <p>Amazing details!</p>}
-    </div>
-  );
-}`,
+      'This is the base class for most objects in three.js and provides a set of properties and methods for manipulating objects in 3D space. Note that this can be used for grouping objects via the .add( object ) method which adds the object as a child, however it is better to use Group for this.',
+    code: ` var group = new THREE.Object3D();`,
   },
 };
